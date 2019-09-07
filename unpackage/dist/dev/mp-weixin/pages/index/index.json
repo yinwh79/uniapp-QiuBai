@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "index-list": "/components/index/IndexList",
+    "swiper-tabbar": "/components/tabbar/SwiperTabbar"
+  }
+}
