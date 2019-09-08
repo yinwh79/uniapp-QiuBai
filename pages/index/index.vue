@@ -25,7 +25,7 @@
               >
                 <index-list :item='item' :idx="idx1"></index-list>  
               </block>
-              <!-- 上拉加载 -->
+              <!-- 上拉加载组件 -->
             </scroll-view>
           </swiper-item>          
         </swiper>
