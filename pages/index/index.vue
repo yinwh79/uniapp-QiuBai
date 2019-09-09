@@ -22,15 +22,23 @@
               scroll-y 
               class="list"
               @scrolltolower="loadmore(idx)"
-            >                
-              <block 
-                v-for="(item,idx1) in list.list"
-                :key ="idx1"
-              >
-                <index-list :item='item' :idx="idx1"></index-list>  
-              </block>
-              <!-- 上拉加载组件 -->
-              <load-more :loadtext = "list.loadtext"></load-more>
+            >
+              <!-- 有数据显示 -->
+              <template v-if="list.list.length">
+                <block
+                  v-for="(item,idx1) in list.list"
+                  :key ="idx1"
+                >
+                  <index-list :item='item' :idx="idx1"></index-list>  
+                </block>
+                <!-- 上拉加载组件 -->
+                <load-more :loadtext = "list.loadtext"></load-more>
+              </template>
+              <!-- 无数据默认 -->
+              <template v-else>
+                123
+                <nothing>123</nothing>
+              </template>
             </scroll-view>
           </swiper-item>          
         </swiper>
@@ -42,12 +50,13 @@
   import IndexList from '@/components/index/IndexList'
   import SwiperTabbar from '@/components/tabbar/SwiperTabbar'
   import LoadMore from '@/components/common/LoadMore'
-  
+  import Nothing from '@/components/common/Nothing'
 	export default {
     components:{
        IndexList,
        SwiperTabbar,
-       LoadMore
+       LoadMore,
+       Nothing
     },
 		data() {
 			return {
