@@ -1,5 +1,5 @@
 <template>
-  <view class="index-item">
+  <view class="index-item animated rotateInUpLeft">
     <!-- 头像昵称 -->
   	<view class="index-item-row1">
   		<view>
@@ -9,7 +9,8 @@
   			lazy-load></image>
         {{item.username}}
   		</view>
-      <view>
+      <view 
+        @tap="focusOn">
         <view class="icon iconfont icon-zengjia"></view>
          关注         
       </view>
@@ -63,6 +64,12 @@
     props: {
       item: Object,
       idx: Number
+    },
+    methods:{
+      // 关注
+      focusOn(){
+        
+      }
     }
   }
 </script>

@@ -6,6 +6,7 @@
 			"style": {
 				"app-plus":{
 					"scrollIndicator": "none",	// 隐藏滚动条
+          "bounce":"none",    // 关闭上拉反弹效果
 					// 导航栏
 					"titleNView": {
 						// 搜索框

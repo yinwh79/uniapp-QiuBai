@@ -12,13 +12,17 @@
           class="swiper-box"
           :style="{height: swiperBoxHeight + 'px'}"
           :current= "tabIndex"
-          @change = "tabChange"
+          @change = "tabChange"        
         >
           <swiper-item
             v-for="(list,idx) in newList"
             :key ='idx'
           >
-            <scroll-view scroll-y class="list">              
+            <scroll-view 
+              scroll-y 
+              class="list"
+              @scrolltolower="loadmore(idx)"
+            >                
               <block 
                 v-for="(item,idx1) in list.list"
                 :key ="idx1"
@@ -26,6 +30,7 @@
                 <index-list :item='item' :idx="idx1"></index-list>  
               </block>
               <!-- 上拉加载组件 -->
+              <load-more :loadtext = "list.loadtext"></load-more>
             </scroll-view>
           </swiper-item>          
         </swiper>
@@ -36,15 +41,19 @@
 <script>
   import IndexList from '@/components/index/IndexList'
   import SwiperTabbar from '@/components/tabbar/SwiperTabbar'
+  import LoadMore from '@/components/common/LoadMore'
+  
 	export default {
     components:{
        IndexList,
-       SwiperTabbar
+       SwiperTabbar,
+       LoadMore
     },
 		data() {
 			return {
         newList:[
          {
+          loadtext:'上拉加载更多',
           list: [
             {
               userpic: "../../static/demo/userpic/12.jpg",
@@ -196,7 +205,39 @@
       tabChange(e){
         // console.log(e.detail.current);
         this.tabIndex = e.detail.current
+      },
+      // 上拉加载
+      loadmore(idx){
+       const loadmoreText = [
+          '上拉加载更多',
+          "加载中...",
+          "没有更多数据了"
+          ]
+          
+        if(this.newList[idx].loadtext != loadmoreText[0]){return}
+        // 修改状态
+        this.newList[idx].loadtext = loadmoreText[1]
+        setTimeout(()=>{
+          let obj =   {
+              userpic: "../../static/demo/userpic/12.jpg",
+              username: "wzj",
+              isguanzhu: false,
+              title: "WZJ牛逼",
+              type: "vedio", // img是图片类型，video是视频
+              titlepic: "../../static/demo/datapic/11.jpg",
+              playnum: '20W',
+              long: "2:47",
+              infonum: {
+                index: 1, // 0表示没有操作 1：表示顶 2：表示踩
+                dingnum: 11,
+                cainum: 12
+              }
+             }
+          this.newList[idx].list.push(obj)
+          this.newList[idx].loadtext = loadmoreText[0]
+        },1000)
       }
+      
 		}
 	}
 </script>
