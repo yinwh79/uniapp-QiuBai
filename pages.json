@@ -61,6 +61,39 @@
 				// "navigationBarTitleText": "uni-app"
 			}
 		}
+        ,{
+            "path" : "pages/search/search",
+            "style" : {
+              "app-plus":{
+              	"scrollIndicator": "none",	// 隐藏滚动条
+                "bounce":"none",    // 关闭上拉反弹效果
+              	// 搜索页导航栏
+              	"titleNView": {
+                  // 取消返回按钮
+                  "autoBackButton": false,
+              		// 搜索框
+              		"searchInput": {
+              				"align":"left",                     
+              				"backgroundColor": "#f7f7f7",
+              				"borderRadius":"4px",
+              				"placeholder":"搜索糗事",
+              				"placeholderColor":"#ccc"  				
+              		},
+              		// 按钮
+              		"buttons": [             			
+              			// 右边
+              			{
+              				"color":"#000",
+              				"colorPressed": "#bbb",
+              				"float": "right",
+              				"fontSize":"16px",              		
+              				"text": "取消"
+              			}
+              		]
+              	}
+              }
+            }
+        }
     ],
 	// 底部导航栏
 	"tabBar": {

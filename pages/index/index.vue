@@ -203,8 +203,15 @@
               this.swiperBoxHeight = height       
             // console.log( this.swiperBoxHeight)
           }
-      });
+      })   
 		},
+    // 监听原生搜索栏点击事件
+    onNavigationBarSearchInputClicked(){
+      // 路由跳转
+      uni.navigateTo({
+        url:"../search/search"
+      })
+    },
 		methods: {
       // tab点击切换
       tabtap(idx){
