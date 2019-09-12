@@ -13,6 +13,13 @@
           <view class="icon iconfont icon-xialazhankai"></view>
         </view>
        </uni-nav-bar>
+       <!-- textarea -->
+       <view class="uni-textarea">
+         <textarea
+          v-model="dynamicContent"
+          placeholder="说一句话吧~" 
+         />
+       </view>
 	</view>
 </template>
 
@@ -25,7 +32,8 @@
     },
 		data() {
 			return {
-				dynamicType: '所有人可见'
+				dynamicType: '所有人可见',
+        dynamicContent: ""
 			};
 		},
     methods:{
@@ -58,4 +66,6 @@
   align-items: center;
   // line-height: 50px;
   justify-content: center;
+.uni-textarea
+  border: 1upx solid #eee;
 </style>
