@@ -94,6 +94,16 @@
               }
             }
         }
+        ,{
+            "path" : "pages/AddInput/AddInput",
+            "style" : {
+              // 设置自定义导航
+              "app-plus":{
+                // 禁止原生导航
+                "titleNView":false
+              }
+            }
+        }
     ],
 	// 底部导航栏
 	"tabBar": {

@@ -212,6 +212,17 @@
         url:"../search/search"
       })
     },
+    // 监听原生导航栏按钮点击事件
+    onNavigationBarButtonTap(e) {
+      switch(e.index){
+        // 1打开发布页面
+        case 1:
+        uni.navigateTo({
+          url:'../AddInput/AddInput'
+        })
+        break
+      }
+    },
 		methods: {
       // tab点击切换
       tabtap(idx){
