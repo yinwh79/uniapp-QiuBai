@@ -30,9 +30,15 @@
                     </view>
                     <view class="uni-uploader-body">
                         <view class="uni-uploader__files">
+                          <!-- 图片展示 -->
                             <block v-for="(image,index) in imageList" :key="index">
                                 <view class="uni-uploader__file">
-                                    <image class="uni-uploader__img" :src="image" :data-src="image" @tap="previewImage"></image>
+                                  <!-- 删除按钮-->
+                                  <view 
+                                    class="icon iconfont icon icon-shanchu"
+                                    @tap="delectImg(index)"
+                                  ></view>
+                                  <image class="uni-uploader__img" :src="image" :data-src="image" @tap="previewImage"></image>
                                 </view>
                             </block>
                             <view class="uni-uploader__input-box">
@@ -134,6 +140,18 @@
               urls: this.imageList
           })
       },
+      // 删除图片
+      delectImg(idx){
+        uni.showModal({
+          title: "提示",
+          content: "是否删除该图片",
+          success: (res) => {
+            if(res.confirm){
+              this.imageList.splice(idx,1)
+            }
+          }
+        })
+      },
       async checkPermission(code) {
           let type = code ? code - 1 : this.sourceTypeIndex;
           let status = permision.isIOS ? await permision.requestIOS(sourceType[type][0]) :
@@ -171,12 +189,23 @@
     .list-pd {
         margin-top: 50upx;
     }
-
-.out-tabbar
-  display: flex;
-  align-items: center;
-  // line-height: 50px;
-  justify-content: center;
-.uni-textarea
-  border: 1upx solid #eee;
+// 图片删除
+  .uni-uploader__file
+    position: relative;
+    .icon-shanchu
+        position: absolute;
+        z-index 99
+        top: 0;
+        right: 0;
+        background-color: #333;
+        color #fff
+        padding: 2upx 10upx;
+        border-right: 10upx;
+  .out-tabbar
+    display: flex;
+    align-items: center;
+    // line-height: 50px;
+    justify-content: center;
+  .uni-textarea
+    border: 1upx solid #eee;
 </style>
