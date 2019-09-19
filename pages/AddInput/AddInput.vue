@@ -131,9 +131,10 @@
   .out-tabbar
     display: flex;
     align-items: center;
-    // line-height: 50px;
+    line-height: 50px;
     justify-content: center;
   .uni-textarea
+    height: 400upx;
     border: 1upx solid #eee;
   // 公告
     .gonggao

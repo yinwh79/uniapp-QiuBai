@@ -46,13 +46,17 @@
 		{
 			"path": "pages/news/news",
 			"style": {
-				// "navigationBarTitleText": "uni-app"
+				"app-plus":{
+				  "titleNView":false
+				}
 			}
 		},
 		{
 			"path": "pages/paper/paper",
 			"style": {
-				// "navigationBarTitleText": "uni-app"
+        "app-plus":{
+          "titleNView":false
+        }				
 			}
 		},
 		{
