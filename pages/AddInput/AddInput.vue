@@ -39,7 +39,7 @@
               <view>2.涉及黄色，政治，广告及骚扰信息</view>
               <view>3.涉及黄色，政治，广告及骚扰信息</view>
               <view>4.涉及黄色，政治，广告及骚扰信息</view>
-              <button type="default">朕知道了</button>
+              <button type="default" @tap="hidePopup">朕知道了</button>
           </view>
         </uni-popup>
 	</view>
@@ -60,15 +60,45 @@
 		data() {
 			return {
         showPopup: true,
+        isBackFlag: false,
 				dynamicType: '所有人可见',
         dynamicContent: "",
         imgList: []
 			};
 		},
+    // 监听返回事件
+    onBackPress(){
+      // 判断用户是否填写内容
+      if(!this.dynamicContent && this.imgList.length < 1){return}
+       if(!this.isBackFlag){
+           this.saveMsg()
+           return true
+       } 
+      
+            
+    },
     methods:{
       // 返回
       back(){
         uni.navigateBack({ delta: 1})             
+      },
+      // 保存为草稿
+      saveMsg(){
+        uni.showModal({
+          content: '是否保存为草稿?',
+          cancelText: '不保存',
+          confirmText: '保存',
+          success: res => {
+            // 点击保存
+            if(res.confirm){
+              
+            }else{
+              
+            }
+            this.isBackFlag = true
+            this.back()      
+          }     
+        }); 
       },
       // 动态类型
       changeType(){
