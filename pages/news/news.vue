@@ -34,7 +34,24 @@
             </view>
           </block>
 		   </uni-nav-bar>
-	</view>
+       
+        <!-- 展示列表 -->
+        <view class="common-list">
+           <view class="common-list-header-l">
+             <image src="../../static/demo/userpic/12.jpg" mode="widthFix"></image>
+           </view>
+           <view
+            class="common-list-header-r"
+           >
+            <view class="header-r-l">
+              <view>昵称
+                <view class="icon iconfont icon-nan">25</view>
+              </view>              
+                <view class="icon iconfont icon-zengjia">关注</view>                              
+            </view>          
+           </view>
+        </view>
+	</view>          
 </template>
 
 <script>
@@ -96,4 +113,18 @@
     position: absolute;
     margin-left: -20upx;
     bottom: 1upx;
+  // 公共列表
+  .common-list
+    display: flex;
+    .common-list-header-l
+      image
+        width: 90upx;
+        height: 90upx;
+        border-radius 50%
+    .common-list-header-r
+      display: flex;
+      .header-r-l
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 </style>
