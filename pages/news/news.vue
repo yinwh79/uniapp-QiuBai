@@ -51,10 +51,21 @@
               <view class="icon iconfont icon-zengjia">关注</view>           
             </view>          
             <view class="content-title">我是标题我是标题我是标题我是标题我是标题我是标题我是标题</view>
-            <view>
+            <view class="flex-c-c content-play">
+              <!-- 图片 -->
               <image 
                 class="content-image"
-                src="../../static/demo/datapic/13.jpg" mode="widthFix"></image>
+                src="../../static/demo/datapic/13.jpg" 
+                mode="widthFix"
+                lazy-load
+              ></image>
+              <!-- 视频 -->
+              <view class="common-list-play icon iconfont icon-bofang">
+                
+              </view>
+              <view class="common-list-playinfo">
+                20W 次播放 2：47
+              </view>
             </view>
             <view class="flex-jsb">
               <view>浙江  杭州</view>
@@ -145,6 +156,21 @@
       flex 1
       padding-bottom: 10upx;
       border-bottom: 1upx solid #eee;
+      .content-play
+        position: relative;
+        .common-list-play,
+        .common-list-playinfo
+          position: absolute;
+          color #fff
+        .common-list-play
+          font-size: 130upx;
+        .common-list-playinfo
+          right: 10upx;
+          bottom: 10upx;
+          font-size: 26upx;
+          background-color: rgba(51,51,51,0.73);
+          border-radius: 20upx;
+          padding: 0 25upx;
       .handle-type
         color #aaa
         view
