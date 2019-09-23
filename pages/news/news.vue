@@ -3,6 +3,7 @@
     <!-- 自定义导航栏 -->
 		<uni-nav-bar
 		  :statusBar="true" 
+      class="uni-nav-bar"
 		  @click-right="submit">
           <!-- 左边 -->
           <block slot="left">
@@ -44,11 +45,25 @@
             class="common-list-header-r"
            >
             <view class="header-r-l">
-              <view>昵称
-                <view class="icon iconfont icon-nan">25</view>
+              <view class="flex-ac nickname">昵称
+                <view class="icon iconfont icon-nan user-age">25</view>
               </view>              
-                <view class="icon iconfont icon-zengjia">关注</view>                              
+              <view class="icon iconfont icon-zengjia">关注</view>           
             </view>          
+            <view class="content-title">我是标题我是标题我是标题我是标题我是标题我是标题我是标题</view>
+            <view>
+              <image 
+                class="content-image"
+                src="../../static/demo/datapic/13.jpg" mode="widthFix"></image>
+            </view>
+            <view class="flex-jsb">
+              <view>浙江  杭州</view>
+              <view class="flex-ac handle-type">
+                <view class="icon iconfont icon-zhuanfa">66</view>
+                <view class="icon iconfont icon-pinglun1">88</view>
+                <view class="icon iconfont icon-dianzan1">188</view>
+              </view>
+            </view>
            </view>
         </view>
 	</view>          
@@ -85,8 +100,9 @@
 </script>
 
 <style lang="stylus">
-.icon
-  font-size: 48upx;
+.uni-nav-bar
+  .icon
+    font-size: 48upx;
 .nav-middle
   margin-left: -20upx;
   height: 86upx;
@@ -116,15 +132,46 @@
   // 公共列表
   .common-list
     display: flex;
+    padding: 20upx;
     .common-list-header-l
+      // 防止被压缩
+      flex-shrink 0
+      margin-right: 15upx;
       image
         width: 90upx;
         height: 90upx;
         border-radius 50%
     .common-list-header-r
-      display: flex;
-      .header-r-l
+      flex 1
+      padding-bottom: 10upx;
+      border-bottom: 1upx solid #eee;
+      .handle-type
+        color #aaa
+        view
+          margin-left: 15upx;
+      .icon-zengjia
+        background-color: #EEEEEE
+        padding: 0 10upx;
+        font-size: 26upx;
+      .nickname
+        color #999
+      .user-age
+        background-color: #007aff;
+        color #FFFFFF
+        font-size: 23upx;
+        padding:  2upx 10upx;
+        margin-left: 10upx;
+        border-radius 20upx
+      .content-title
+        font-size: 32upx;
+        padding: 15upx;
+      .header-r-l        
         display: flex;
+        flex 1
         align-items: center;
         justify-content: space-between;
+      .content-image
+        width: 100%;
+        border-radius 10upx
+        
 </style>
