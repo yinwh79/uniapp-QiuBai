@@ -53,19 +53,23 @@
             <view class="content-title">我是标题我是标题我是标题我是标题我是标题我是标题我是标题</view>
             <view class="flex-c-c content-play">
               <!-- 图片 -->
-              <image 
+             <!-- <image 
                 class="content-image"
                 src="../../static/demo/datapic/13.jpg" 
                 mode="widthFix"
                 lazy-load
-              ></image>
+              ></image> -->
               <!-- 视频 -->
-              <view class="common-list-play icon iconfont icon-bofang">
-                
+            <!-- <view class="common-list-play icon iconfont icon-bofang">                                            
               </view>
               <view class="common-list-playinfo">
                 20W 次播放 2：47
-              </view>
+              </view> -->
+              <!-- 分享 -->
+              <view class="common-list-share flex-ac">
+                  <image src="../../static/demo/datapic/14.jpg" mode="widthFix" lazy-load></image>
+                  <view>标题结构</view>
+                </view>
             </view>
             <view class="flex-jsb">
               <view>浙江  杭州</view>
@@ -92,6 +96,18 @@
         tabBars:[
           {name:"关注",id: 'guanzhu'},
           {name:"话题",id:'huati'}
+        ],
+        // 公共列表数据
+        list:[
+          {
+            userpic: "",
+            username:"",
+            sex: 0, // 0代表男性 1代表女性
+            age: 25,
+            isguangzhu: false,
+            title:"",
+            titlepic:""
+          }
         ]
 			};
 		},
@@ -144,6 +160,16 @@
   .common-list
     display: flex;
     padding: 20upx;
+    // 分享样式
+    .common-list-share
+      width: 100%;
+      background-color: #eee;            
+      padding: 10upx;
+      border-radius 10upx
+      image
+        width: 200upx;
+        height: 150upx;
+        margin-right: 10upx;
     .common-list-header-l
       // 防止被压缩
       flex-shrink 0
