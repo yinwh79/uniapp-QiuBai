@@ -1,5 +1,6 @@
 <template>
 	<view class="wrapper">
+    <!-- 头像 -->
 		<view class="user-set-info-list flex-jsb">
       <view>头像</view>
       <view @tap="userChooseImg">
@@ -18,6 +19,7 @@
       </view>
       <view class="icon iconfont icon-bianji1"></view>
     </view>
+    <!-- 性别 -->
     <view class="user-set-info-list flex-jsb">
       <view>性别</view>
       <view @tap="userChangeOne('sex')">
@@ -40,6 +42,7 @@
       <view class="icon iconfont icon-bianji1"></view>
       
     </view>
+    <!-- 情感 -->
     <view class="user-set-info-list flex-jsb">
       <view>情感</view>
       <view @tap="userChangeOne('qg')">
@@ -47,10 +50,19 @@
       </view>
       <view class="icon iconfont icon-bianji1"></view>
     </view>
+    <!-- 职业 -->
     <view class="user-set-info-list flex-jsb">
       <view>职业</view>
       <view @tap="userChangeOne('job')">
        {{job}} 
+      </view>
+      <view class="icon iconfont icon-bianji1"></view>
+    </view>
+    <!-- 家乡 -->
+    <view class="user-set-info-list flex-jsb">
+      <view>家乡</view>
+      <view  @tap="showMulLinkageThreePicker">
+       {{pickerText}} 
       </view>
       <view class="icon iconfont icon-bianji1"></view>
     </view>
@@ -59,14 +71,21 @@
       class="user-set-btn"
       @tap="submit"      
     >完成</button>
-	</view>
+    <!-- 三级联动组件 -->
+    <mpvue-city-picker themeColor="#007AFF" ref="mpvueCityPicker" :pickerValueDefault="cityPickerValueDefault" @onConfirm="onConfirm"></mpvue-city-picker>
+	</view>  
 </template>
 
 <script>
+  import mpvueCityPicker from "../../components/mpvue-citypicker/mpvueCityPicker.vue";
+
   let sexArr = ['不限','男','女']
   let qgArr=['秘密','未婚','已婚'];
   let jobArr=['秘密','IT','老师'];
 	export default {
+    components:{
+      mpvueCityPicker
+    },
 		data() {
 			return {
 				// 头像
@@ -75,10 +94,19 @@
         sex:"不限",
         birthday:"1994-07-03",
         qg:"未婚",
-        job:"IT"
+        job:"IT",
+        cityPickerValueDefault: [0, 0, 1],
+        pickerText: "鹤岗"
 			}
 		},
 		methods: {
+      // 城市选择三级联动      
+      showMulLinkageThreePicker() {
+        this.$refs.mpvueCityPicker.show()
+      },
+      onConfirm(e) {
+        this.pickerText = e.label;
+      },
       // 获取日期
       getDate(type) {
         const date = new Date();
@@ -104,7 +132,7 @@
         uni.chooseImage({
           count: 1,
           sizeType:['compressed'],
-          success: (res) => {            
+          success: res => {            
             this.userPic = res.tempFilePaths            
           }
         })
