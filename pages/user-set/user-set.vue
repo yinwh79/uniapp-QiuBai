@@ -19,7 +19,7 @@
 		data() {
 			return {
 				userSetList:[
-					{ icon:"",name:"账号与安全",clicktype:"navigateTo",url:"../../pages/user-safe/user-safe",auth:true },
+					{ icon:"",name:"账号与安全",clicktype:"navigateTo",url:"../../pages/user-set-repassword/user-set-repassword",auth:true },
 					{ icon:"",name:"资料编辑",clicktype:"navigateTo",url:"../../pages/user-set-userinfo/user-set-userinfo",auth:true },
 					// { icon:"",name:"小纸条",clicktype:"",url:"" },
 					{ icon:"",name:"清除缓存",clicktype:"clear",url:"" },

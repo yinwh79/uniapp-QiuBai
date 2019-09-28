@@ -1,5 +1,9 @@
 <template>
-  <view class="home-list-item" hover-class="home-list-hover">
+  <view 
+    class="home-list-item" 
+    hover-class="home-list-hover"
+    @tap="handleClick"
+  >
     <view class="flex-ac">
       <view
         v-if="item.icon"
@@ -17,6 +21,23 @@
     props:{
       item:Object,
       idx: Number
+    },
+    methods:{
+      handleClick(){
+        switch (this.item.clicktype){
+          case "navigateTo":
+          if(this.item.url){
+            uni.navigateTo({
+              url: this.item.url
+          })}
+          break;
+          case "switchTab":
+          if(this.item.url){ 
+            uni.switchTab({
+              url: this.item.url
+          })}
+        }
+      }
     }
   }
 </script>

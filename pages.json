@@ -127,6 +127,13 @@
               "navigationBarTitleText": "设置"
             }
         }
+        // 修改密码
+        ,{
+            "path" : "pages/user-set-repassword/user-set-repassword",
+            "style" : {
+              "navigationBarTitleText": "修改密码"
+            }
+        }
     ],
 	// 底部导航栏
 	"tabBar": {
