@@ -26,6 +26,21 @@
       <view class="icon iconfont icon-bianji1"></view>
     </view>
     <view class="user-set-info-list flex-jsb">
+      <view>生日</view>
+      <picker         
+        mode="date" 
+        :value="birthday" 
+        :start="startDate" 
+        :end="endDate" 
+        @change="bindDateChange">
+      <view class="birthday">
+        {{birthday}}
+      </view>
+      </picker>
+      <view class="icon iconfont icon-bianji1"></view>
+      
+    </view>
+    <view class="user-set-info-list flex-jsb">
       <view>情感</view>
       <view @tap="userChangeOne('qg')">
         {{qg}}
@@ -58,12 +73,33 @@
         userPic:"../../static/demo/userpic/11.jpg",
         username: "wzjNB",
         sex:"不限",
+        birthday:"1994-07-03",
         qg:"未婚",
         job:"IT"
 			}
 		},
 		methods: {
-      // 修改图像
+      // 获取日期
+      getDate(type) {
+        const date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+
+        if (type === 'start') {
+          year = year - 60;
+        } else if (type === 'end') {
+          year = year + 2;
+        }
+        month = month > 9 ? month : '0' + month;;
+        day = day > 9 ? day : '0' + day;
+        return `${year}-${month}-${day}`;
+      },
+      // 修改生日
+      bindDateChange(e) {
+      	this.birthday = e.target.value
+      },
+      // 修改头像
       userChooseImg(){
         uni.chooseImage({
           count: 1,
@@ -108,7 +144,15 @@
 			submit(){
         
       }
-		}
+		},
+    computed: {
+      startDate() {
+        return this.getDate('start');
+      },
+      endDate() {
+        return this.getDate('end');
+      }
+    },
 	}
 </script>
 
@@ -122,6 +166,8 @@
     font-weight: 700;
     font-size: 30upx;
     color #9b9b9b
+   .birthday
+    color #000000!important    
    view:nth-of-type(2)
     font-weight: 700;
     .info-content
@@ -131,7 +177,8 @@
       width: 80upx;
       height: 80upx;
       border-radius 50%
-   view:nth-of-type(3)
+   .icon
+    font-weight: 400!important;
     font-size: 40upx;
     margin-left: 20upx;
     color #9b9b9b
