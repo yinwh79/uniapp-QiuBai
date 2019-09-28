@@ -2,12 +2,11 @@
 	<view class="wrapper">
 		<view class="user-set-info-list flex-jsb">
       <view>头像</view>
-      <view>
+      <view @tap="userChooseImg">
         <image 
           :src="userPic" 
           mode="widthFix"
-          lazy-load
-          @tap="userChooseImg"
+          lazy-load          
         ></image>
       </view>
       <view class="icon iconfont icon-bianji1"></view>
@@ -15,11 +14,31 @@
     <view class="user-set-info-list flex-jsb">
       <view>昵称</view>
       <view>
-        <view class="info-content">wzjNB</view>
+        <input class="info-content" type="text" v-model="username" />
       </view>
       <view class="icon iconfont icon-bianji1"></view>
     </view>
-    
+    <view class="user-set-info-list flex-jsb">
+      <view>性别</view>
+      <view @tap="userChangeOne('sex')">
+        {{sex}}
+      </view>
+      <view class="icon iconfont icon-bianji1"></view>
+    </view>
+    <view class="user-set-info-list flex-jsb">
+      <view>情感</view>
+      <view @tap="userChangeOne('qg')">
+        {{qg}}
+      </view>
+      <view class="icon iconfont icon-bianji1"></view>
+    </view>
+    <view class="user-set-info-list flex-jsb">
+      <view>职业</view>
+      <view @tap="userChangeOne('job')">
+       {{job}} 
+      </view>
+      <view class="icon iconfont icon-bianji1"></view>
+    </view>
     <button
       type="primary" 
       class="user-set-btn"
@@ -29,11 +48,18 @@
 </template>
 
 <script>
+  let sexArr = ['不限','男','女']
+  let qgArr=['秘密','未婚','已婚'];
+  let jobArr=['秘密','IT','老师'];
 	export default {
 		data() {
 			return {
 				// 头像
-        userPic:"../../static/demo/userpic/11.jpg"
+        userPic:"../../static/demo/userpic/11.jpg",
+        username: "wzjNB",
+        sex:"不限",
+        qg:"未婚",
+        job:"IT"
 			}
 		},
 		methods: {
@@ -44,6 +70,37 @@
           sizeType:['compressed'],
           success: (res) => {            
             this.userPic = res.tempFilePaths            
+          }
+        })
+      },
+      // 单列选择
+      userChangeOne(val){
+        let arr = []
+        switch (val){
+          case 'sex':
+            arr = sexArr
+            break;
+          case 'qg':
+            arr = qgArr
+            break;
+          case 'job':
+            arr = jobArr
+            break;
+        }
+        uni.showActionSheet({
+          itemList: arr,
+          success: res =>{
+            switch (val){
+              case 'sex':
+                this.sex = arr[res.tapIndex]
+                break;
+              case 'qg':
+                this.qg = arr[res.tapIndex]
+                break;
+              case 'job':
+                this.job = arr[res.tapIndex]
+                break;
+            }
           }
         })
       },
@@ -65,8 +122,10 @@
     font-weight: 700;
     font-size: 30upx;
     color #9b9b9b
-   view:nth-of-type(2)   
+   view:nth-of-type(2)
+    font-weight: 700;
     .info-content
+      text-align: right;      
       color #000
     image
       width: 80upx;
