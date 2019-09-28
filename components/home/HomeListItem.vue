@@ -1,9 +1,13 @@
 <template>
   <view class="home-list-item" hover-class="home-list-hover">
-    <view 
-      class="icon iconfont"
-      :class="['icon-'+ item.icon]"
-    >{{item.name}}</view>
+    <view class="flex-ac">
+      <view
+        v-if="item.icon"
+        class="icon iconfont"
+        :class="['icon-'+ item.icon]"
+      ></view>
+      {{item.name}}
+    </view>
     <view class="icon iconfont icon-jinru"></view>
   </view>
 </template>
@@ -29,10 +33,13 @@
   border-bottom: 1upx solid #EEEEEE;
   .iconfont
     font-size 28upx
-  view:first-child
-    color #333333
-  view:last-child
-    color #CCCCCC
+  view
+    view:first-child
+      color #CCCCCC
+      font-size: 32upx;
+      margin-right: 10upx;
+    view:last-child
+      color #333333
 .home-list-hover
   background-color: #f4f4f4; 
 </style>

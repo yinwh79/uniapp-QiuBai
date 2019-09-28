@@ -87,7 +87,9 @@
     // 监听原生标题栏按钮点击事件
     onNavigationBarButtonTap(e){      
       if(e.index === 0){
-        console.log('wzjNB');
+        uni.navigateTo({
+          url:'../user-set/user-set'
+        })
       }
     }
 	}
