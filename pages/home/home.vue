@@ -1,22 +1,12 @@
 <template>
 	<view>
 		<!-- 未登录 -->
-    <template v-if="isLogin">
+    <template v-if="!isLogin">
       <view class="flex-c-c">
          登录后,体验更多功能
        </view>
        <!-- 三方登录 -->
-       <view class="other-login flex-ac">
-         <view class="">
-           <view class="icon iconfont icon-weixin flex-c-c"></view>         
-         </view>
-         <view class="">
-           <view class="icon iconfont icon-xinlangweibo flex-c-c"></view>         
-         </view>
-         <view class="">
-           <view class="icon iconfont icon-QQ flex-c-c"></view>   
-         </view>      
-       </view>
+       <home-other-login></home-other-login>
       <!-- 账号密码登录 -->
       <view class="flex-c-c">
         账号密码登录
@@ -24,32 +14,18 @@
        </view>
     </template>
    <!-- 登录 -->
-   <view class="home-info flex-ac">
-     <image 
-      src="../../static/demo/userpic/11.jpg" 
-      mode="widthFix"
-      lazy-load
-     ></image>
-     <view>
-       <view>昵称</view>
-       <view>总访客 0 今日 0</view>       
-     </view>
-     <view class="icon iconfont icon-jinru"></view>
-   </view>
+    <template v-else>
+      <home-info :homeInfo="homeInfo"></home-info>
+    </template>
    <!-- 数据内容 -->
    <view class="home-data flex-c-c">
-     <view class="flex-c-c">
-      <view>0</view><view>糗事</view>   
-     </view>
-     <view class="flex-c-c">
-      <view>0</view><view>糗事</view>   
-     </view>
-     <view class="flex-c-c">
-      <view>0</view><view>糗事</view>   
-     </view>
-     <view class="flex-c-c">
-      <view>0</view><view>糗事</view>   
-     </view>
+     <block
+      v-for="(item,idx) in homedata"
+      :key = "idx"
+     >
+       <home-data :item="item"></home-data>
+     </block>
+     
    </view>
    <!-- 广告位 -->
    <view class="flex-c-c home-ad">
@@ -59,22 +35,53 @@
        lazy-load
      ></image>
    </view>
-   <!-- 功能列表 -->
+   <!-- 功能列表 -->   
    <view class="home-list">
-     <view class="home-list-item" hover-class="home-list-hover">
-       <view class="icon iconfont icon-liulan">浏览历史</view>
-       <view class="icon iconfont icon-jinru"></view>
-     </view>
+    <block v-for="(item,idx) in homeList" :key="idx">
+      <home-list-item 
+        :item="item"
+        :idx ="idx"
+      ></home-list-item>
+    </block>
    </view>
 	</view>
 </template>
 
 <script>
- 
-	export default {  
+  import HomeListItem from '../../components/home/HomeListItem.vue'
+  import HomeInfo from '../../components/home/HomeInfo.vue'
+  import HomeOtherLogin from '../../components/home/HomeOtherLogin.vue'
+  import HomeData from '../../components/home/HomeData.vue'
+	export default {
+    components:{
+      HomeListItem,
+      HomeInfo,
+      HomeOtherLogin,
+      HomeData
+    },
 		data() {
 			return {
-				isLogin: false
+				isLogin: true,
+        // 功能列表数据
+        homeList:[
+          {icon:"liulan",name:"浏览历史"},
+          {icon:"huiyuanvip",name:"糗百认证"},
+          {icon:"keyboard",name:"审核糗事"}
+        ],
+        // 用户信息
+        homeInfo:{
+          userpic: "../../static/demo/userpic/11.jpg",
+          username: "wzjNB",
+          totalnum: 88888,
+          todaynum: 8888
+        },
+        // 用户数据
+        homedata:[
+          {name:"糗事",num: 888},
+          {name:"动态",num: 888},
+          {name:"评论",num: 888},
+          {name:"收藏",num: 888}
+        ]
 			};
 		},
     // 监听原生标题栏按钮点击事件
@@ -87,68 +94,14 @@
 </script>
 
 <style lang="stylus">
-// 三方登录
-.other-login
-  padding: 20upx 80upx;  
-  display flex
-  justify-content: space-between;    
-  .icon    
-    width: 100upx;
-    height: 100upx;
-    border: 1upx solid;
-    font-size: 55upx;
-    border-radius 50%
-    color #FFFFFF
-    &.icon-QQ
-    	background: #2CAEFC;
-    &.icon-weixin
-      background-color: #2BD19B;
-    &.icon-xinlangweibo
-      background-color: #FC7729;
-// 登录后
-.home-info
-  padding: 20upx 40upx;
-  image
-    flex-shrink 0
-    width: 100upx;
-    height: 100upx;
-    border-radius 50%
-    margin-right: 15upx;
-  view:nth-of-type(1)
-    flex 1
-    view:first-child
-      font-size: 32upx;
-    view:last-child
-      color #BBBBBB
-// 数据内容
-.home-data
-  padding: 20upx 40upx;
-  view
-    flex 1
-    color: #989898;
-    flex-direction: column;
-    &:first-child
-      font-size: 32upx;
-      color: #333333;
+
+
+
 // 广告位
 .home-ad
   padding: 20upx;          
   image
     border-radius 20upx
     height: 150upx;
-// 功能列表
-.home-list
-  padding: 20upx;
-.home-list-item 
-  display: flex;
-  justify-content: space-between;
-  padding: 20upx;
-  border-top: 1upx solid #EEEEEE;
-  border-bottom: 1upx solid #EEEEEE;
-  view:first-child
-    color #333333
-  view:last-child
-    color #CCCCCC
-.home-list-hover
-  background-color: #f4f4f4;        
+       
 </style>
