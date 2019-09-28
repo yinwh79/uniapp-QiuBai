@@ -1,26 +1,41 @@
 <template>
 	<view>
 		<!-- 未登录 -->
-    <view class="flex-c-c">
-      登录后,体验更多功能
-    </view>
-    <!-- 三方登录 -->
-    <view class="other-login flex-ac">
-      <view class="">
-        <view class="icon iconfont icon-weixin flex-c-c"></view>         
-      </view>
-      <view class="">
-        <view class="icon iconfont icon-xinlangweibo flex-c-c"></view>         
-      </view>
-      <view class="">
-        <view class="icon iconfont icon-QQ flex-c-c"></view>   
-      </view>      
-    </view>
-   <!-- 账号密码登录 -->
-   <view class="flex-c-c">
-     账号密码登录
-     <view class="icon iconfont icon-jinru"></view>          
-    </view>
+    <template v-if="isLogin">
+      <view class="flex-c-c">
+         登录后,体验更多功能
+       </view>
+       <!-- 三方登录 -->
+       <view class="other-login flex-ac">
+         <view class="">
+           <view class="icon iconfont icon-weixin flex-c-c"></view>         
+         </view>
+         <view class="">
+           <view class="icon iconfont icon-xinlangweibo flex-c-c"></view>         
+         </view>
+         <view class="">
+           <view class="icon iconfont icon-QQ flex-c-c"></view>   
+         </view>      
+       </view>
+      <!-- 账号密码登录 -->
+      <view class="flex-c-c">
+        账号密码登录
+        <view class="icon iconfont icon-jinru"></view>          
+       </view>
+    </template>
+   <!-- 登录 -->
+   <view class="home-info flex-ac">
+     <image 
+      src="../../static/demo/userpic/11.jpg" 
+      mode="widthFix"
+      lazy-load
+     ></image>
+     <view>
+       <view>昵称</view>
+       <view>总访客 0 今日 0</view>       
+     </view>
+     <view class="icon iconfont icon-jinru"></view>
+   </view>
    <!-- 数据内容 -->
    <view class="home-data flex-c-c">
      <view class="flex-c-c">
@@ -59,7 +74,7 @@
 	export default {  
 		data() {
 			return {
-				
+				isLogin: false
 			};
 		},
     // 监听原生标题栏按钮点击事件
@@ -90,6 +105,21 @@
       background-color: #2BD19B;
     &.icon-xinlangweibo
       background-color: #FC7729;
+// 登录后
+.home-info
+  padding: 20upx 40upx;
+  image
+    flex-shrink 0
+    width: 100upx;
+    height: 100upx;
+    border-radius 50%
+    margin-right: 15upx;
+  view:nth-of-type(1)
+    flex 1
+    view:first-child
+      font-size: 32upx;
+    view:last-child
+      color #BBBBBB
 // 数据内容
 .home-data
   padding: 20upx 40upx;
