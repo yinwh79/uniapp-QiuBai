@@ -3,10 +3,23 @@
 		<view class="user-set-info-list flex-jsb">
       <view>头像</view>
       <view>
-        <image src="../../static/demo/userpic/1.jpg" mode="widthFix"></image>
+        <image 
+          :src="userPic" 
+          mode="widthFix"
+          lazy-load
+          @tap="userChooseImg"
+        ></image>
       </view>
       <view class="icon iconfont icon-bianji1"></view>
     </view>
+    <view class="user-set-info-list flex-jsb">
+      <view>昵称</view>
+      <view>
+        <view class="info-content">wzjNB</view>
+      </view>
+      <view class="icon iconfont icon-bianji1"></view>
+    </view>
+    
     <button
       type="primary" 
       class="user-set-btn"
@@ -19,10 +32,21 @@
 	export default {
 		data() {
 			return {
-				
+				// 头像
+        userPic:"../../static/demo/userpic/11.jpg"
 			}
 		},
 		methods: {
+      // 修改图像
+      userChooseImg(){
+        uni.chooseImage({
+          count: 1,
+          sizeType:['compressed'],
+          success: (res) => {            
+            this.userPic = res.tempFilePaths            
+          }
+        })
+      },
       // 提交
 			submit(){
         
@@ -41,12 +65,14 @@
     font-weight: 700;
     font-size: 30upx;
     color #9b9b9b
-   view:nth-of-type(2)
+   view:nth-of-type(2)   
+    .info-content
+      color #000
     image
       width: 80upx;
       height: 80upx;
       border-radius 50%
-   view:last-child
+   view:nth-of-type(3)
     font-size: 40upx;
     margin-left: 20upx;
     color #9b9b9b
