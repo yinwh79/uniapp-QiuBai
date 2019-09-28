@@ -141,6 +141,13 @@
               "navigationBarTitleText": "修改资料"
             }
         }
+        // 意见反馈
+        ,{
+            "path" : "pages/user-set-help/user-set-help",
+            "style" : {
+              "navigationBarTitleText": "意见反馈"
+            }
+        }
     ],
 	// 底部导航栏
 	"tabBar": {
