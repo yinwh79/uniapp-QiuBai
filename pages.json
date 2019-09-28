@@ -134,6 +134,13 @@
               "navigationBarTitleText": "修改密码"
             }
         }
+        // 修改资料
+        ,{
+            "path" : "pages/user-set-userinfo/user-set-userinfo",
+            "style" : {
+              "navigationBarTitleText": "修改资料"
+            }
+        }
     ],
 	// 底部导航栏
 	"tabBar": {
