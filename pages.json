@@ -71,7 +71,7 @@
             // 关闭回弹
             "bounce":"none",
             "buttons":[
-              {"type":"menu"}
+              {"type":"menu" }
             ]
           }
         }
