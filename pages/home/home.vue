@@ -8,7 +8,7 @@
        <!-- 三方登录 -->
        <home-other-login></home-other-login>
       <!-- 账号密码登录 -->
-      <view class="flex-c-c">
+      <view class="flex-c-c" @tap="onLogin">
         账号密码登录
         <view class="icon iconfont icon-jinru"></view>          
        </view>
@@ -61,7 +61,7 @@
     },
 		data() {
 			return {
-				isLogin: true,
+				isLogin: false,
         // 功能列表数据
         homeList:[
           {icon:"liulan",name:"浏览历史"},
@@ -89,6 +89,13 @@
       if(e.index === 0){
         uni.navigateTo({
           url:'../user-set/user-set'
+        })
+      }
+    },
+    methods:{
+      onLogin(){
+        uni.navigateTo({
+          url:"../login/login"
         })
       }
     }

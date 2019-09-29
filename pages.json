@@ -148,6 +148,24 @@
               "navigationBarTitleText": "意见反馈"
             }
         }
+        // 关于糗百
+        ,{
+            "path" : "pages/user-set-about/user-set-about",
+            "style" : {
+              "navigationBarTitleText": "关于糗百"
+            }
+        }
+        // 登录
+        ,{
+            "path" : "pages/login/login",
+            "style" : {
+              "app-plus":{
+                "titleNView":false,
+                "bounce":"none",
+                "scrollIndicator":"none"
+              }
+            }
+        }
     ],
 	// 底部导航栏
 	"tabBar": {
