@@ -19,11 +19,13 @@
       <template v-if="!status">
         <view class="wrapper">
           <input
+            v-model="username"
             type="password" 
             class="uni-input common-input"
             placeholder="昵称/手机号/邮箱"/>
           <view class="login-password-wrapper">
             <input
+              v-model="password"
               type="password" 
               class="uni-input common-input forgot-input" 
               placeholder="请输入密码"/>
@@ -38,16 +40,18 @@
               <view class="login-password-wrapper">
                 <view class="phone">+86</view>
                 <input
+                  v-model="phone"
                   type="password" 
                   class="uni-input common-input phone-input"
                   placeholder="手机号"/>
               </view>
               <view class="login-password-wrapper">
                 <input
+                  v-model="yzm"
                   type="password" 
                   class="uni-input common-input forgot-input" 
                   placeholder="请输入验证码"/>
-                  <view class="get-yzm">获取验证码</view>
+                  <view class="get-yzm" @tap="getYzm">{{codetimeChange}}</view>
               </view>
           </view>
         </template>
@@ -90,13 +94,44 @@
 			return {
         status: false,// 0代表账号密码,1、手机验证码
 				disabled:false,
-				loading: false
+				loading: false,
+        username:"",
+        password:"",
+        phone:"",
+        yzm:"",
+        codetime: 0
 			}
 		},
+    computed:{
+      codetimeChange(){
+        return !this.codetime?'获取验证码':this.codetime + 's'
+      }
+    },
 		methods: {
       // 返回上一层及
 			onBack(){
         
+      },
+      // 获取验证码
+      getYzm(){
+        if(this.codetime > 0){
+          uni.showToast({
+            title: "验证码正在获取中。。。",
+            icon: "none",
+            mask: false,
+            duration: 1500
+          })
+          return
+        }
+        this.codetime = 10;
+        // console.log(this.codetime)
+        let timer = setInterval(()=>{
+          this.codetime--;
+          if(this.codetime < 1){
+            clearInterval(timer)
+            this.codetime = 0
+          }
+        },1000)
       },
       // 切换登录方式
       changeLoginStatus(){
@@ -137,11 +172,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eee;
+    color #000000
+    background-color: yellow;
     border-radius 10upx
     font-size: 25upx;
-    height: 50%;
-    
+    height: 50%;    
     width: 150upx;
     padding: 10upx 0;
 .other-login-type
