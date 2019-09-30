@@ -13,47 +13,58 @@
       src="../../static/common/loginhead.png" 
       mode="widthFix" 
       lazy-load></image> 
-    <!-- 登录区域 -->
-    <!-- 账号密码登录 -->
-    <view class="wrapper">      
-      <input
-        type="password" 
-        class="uni-input common-input"
-        placeholder="昵称/手机号/邮箱"/>
-      <view class="login-password-wrapper">
-        <input
-          type="password" 
-          class="uni-input common-input forgot-input" 
-          placeholder="请输入密码"/>
-          <view class="forgot-password">忘记密码?</view>
-      </view>
-      <!-- 手机号登录 -->
-      <view class="wrapper">
-          <view class="login-password-wrapper">
-            <view class="phone">+86</view>
-            <input
-              type="password" 
-              class="uni-input common-input phone-input"
-              placeholder="手机号"/>
-          </view>
+    <!-- 登录区域 -->        
+      <view >
+       <!-- 账号密码登录 -->
+      <template v-if="!status">
+        <view class="wrapper">
+          <input
+            type="password" 
+            class="uni-input common-input"
+            placeholder="昵称/手机号/邮箱"/>
           <view class="login-password-wrapper">
             <input
               type="password" 
               class="uni-input common-input forgot-input" 
-              placeholder="请输入验证码"/>
-              <view class="get-yzm">获取验证码</view>
+              placeholder="请输入密码"/>
+              <view class="forgot-password">忘记密码?</view>
+          </view> 
+        </view>  
+      </template> 
+                      
+        <!-- 手机号登录 -->
+        <template v-else>
+          <view class="wrapper">
+              <view class="login-password-wrapper">
+                <view class="phone">+86</view>
+                <input
+                  type="password" 
+                  class="uni-input common-input phone-input"
+                  placeholder="手机号"/>
+              </view>
+              <view class="login-password-wrapper">
+                <input
+                  type="password" 
+                  class="uni-input common-input forgot-input" 
+                  placeholder="请输入验证码"/>
+                  <view class="get-yzm">获取验证码</view>
+              </view>
           </view>
+        </template>
+        
+       <view class="wrapper">
+         <button
+           type="primary" 
+           class="user-set-btn"
+          :disabled="disabled"
+          :loading="loading"
+         >登录</button>
+       </view>
       </view>
-      <button 
-        type="primary" 
-        class="user-set-btn"
-       :disabled="disabled"
-       :loading="loading"
-      >登录</button>
-    </view>
+    
     <!-- 登录状态切换 -->
-    <view class="login-type flex-c-c">
-      验证码登录
+    <view class="login-type flex-c-c" @tap="changeLoginStatus">
+      {{status?'账号密码登录':'验证码登录'}}
       <view class="icon iconfont icon-jinru"></view>
     </view>
     <!-- 第三方登录 -->
@@ -77,6 +88,7 @@
     },
 		data() {
 			return {
+        status: false,// 0代表账号密码,1、手机验证码
 				disabled:false,
 				loading: false
 			}
@@ -85,6 +97,10 @@
       // 返回上一层及
 			onBack(){
         
+      },
+      // 切换登录方式
+      changeLoginStatus(){
+        this.status = !this.status
       }
 		}
 	}
