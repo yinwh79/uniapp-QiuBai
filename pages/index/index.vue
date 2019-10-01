@@ -194,6 +194,7 @@
 			}
 		},
 		onLoad() {
+      this.getNav()
       // 获取手机信息
       uni.getSystemInfo({
           success:(res) => { 
@@ -224,6 +225,19 @@
       }
     },
 		methods: {
+      // 1、获取数据
+      getNav(){
+        uni.request({
+          url:"https://ceshi2.dishait.cn/api/v1/postclass",
+          method:'GET',
+          success: (res) => {
+            console.log(res);
+          },
+          fail: () => {
+            
+          }
+        })
+      },
       // tab点击切换
       tabtap(idx){
         this.tabIndex = idx

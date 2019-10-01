@@ -59,46 +59,6 @@
       HomeOtherLogin,
       HomeData
     },
-    onLoad() {
-      uni.getProvider({
-      	service: 'oauth',
-      	success: (result) => {
-      		this.providerList = result.provider.map((value) => {
-      			let providerName = '';
-      			let icon='';
-      			switch (value) {
-      				case 'weixin':
-      					providerName = '微信登录';
-      					icon='weixin';
-      					break;
-      				case 'qq':
-      					providerName = 'QQ登录';
-      					icon='QQ';
-      					break;
-      				case 'sinaweibo':
-      					providerName = '新浪微博登录';
-      					icon='xinlangweibo';
-      					break;
-      				// #ifdef MP-ALIPAY
-      				case 'alipay':
-      					providerName = '支付宝登录';
-      					icon='changyonglogo30';
-      					break;
-      				// #endif
-      			}
-      			return {
-      				name: providerName,
-      				icon:icon,
-      				id: value
-      			}
-      		});
-      		
-      	},
-      	fail: (error) => {
-      		console.log('获取登录通道失败', error);
-      	}
-      });
-    },
 		data() {
 			return {
 				isLogin: false,
