@@ -1,25 +1,23 @@
 <template>
-	<view class="user-set-wrapper">
-		<block
-      v-for="(item,idx) in userSetList"
-      :key ="idx"
-    >
-      <home-list-item :item="item"></home-list-item>
-    </block>
-    <button class="user-loginout" type="primary">退出登录</button>
+	<view class="body">
+		<block v-for="(item,index) in list" :key="index">
+			<home-list-item :item="item"
+			:index="index"></home-list-item>
+		</block>
+		<button class="user-set-btn" type="primary" @tap="User.logout()">退出登陆</button>
 	</view>
 </template>
 
 <script>
-  import HomeListItem from '../../components/home/HomeListItem.vue'
+	import homeListItem from "../../components/home/home-list-item.vue";
 	export default {
-    components:{
-      HomeListItem
-    },
+		components:{
+			homeListItem
+		},
 		data() {
 			return {
-				userSetList:[
-					{ icon:"",name:"账号与安全",clicktype:"navigateTo",url:"../../pages/user-set-repassword/user-set-repassword",auth:true },
+				list:[
+					{ icon:"",name:"账号与安全",clicktype:"navigateTo",url:"../../pages/user-safe/user-safe",auth:true },
 					{ icon:"",name:"资料编辑",clicktype:"navigateTo",url:"../../pages/user-set-userinfo/user-set-userinfo",auth:true },
 					// { icon:"",name:"小纸条",clicktype:"",url:"" },
 					{ icon:"",name:"清除缓存",clicktype:"clear",url:"" },
@@ -34,12 +32,6 @@
 	}
 </script>
 
-<style scoped lang="stylus">
-.user-set-wrapper
-  padding: 0 20upx;
-  .user-loginout
-    width: 100%;
-    margin: 20upx 0;
-    color #333333
-    background-color: #ffe933!important;    
+<style>
+@import "../../common/form.css";
 </style>

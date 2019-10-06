@@ -1,8 +1,10 @@
 <template>
 	<view class="uni-navbar">
-		<view class="uni-navbar__content" :class="{'uni-navbar--fixed': !!fixed,'uni-navbar--shadow':!!border,'uni-navbar--border':!!border}" :style="{'background-color':backgroundColor}">
+		<view class="uni-navbar__content" :class="{'uni-navbar--fixed': !!fixed,'uni-navbar--shadow':!!border,'uni-navbar--border':!!border}" :style="{'background-color':backgroundColor}" style="z-index: 9999;">
 			<!-- 状态栏 -->
+			<!-- #ifdef APP-PLUS -->
 			<uni-status-bar v-if="statusBar"></uni-status-bar>
+			<!-- #endif -->
 			<!-- 导航栏 -->
 			<view class="uni-navbar__header" :style="{color:color}">
 				<!-- 左边按钮 -->
@@ -31,7 +33,9 @@
 			</view>
 		</view>
 		<view class="uni-navbar__placeholder" v-if="fixed">
+			<!-- #ifdef APP-PLUS -->
 			<uni-status-bar v-if="statusBar"></uni-status-bar>
+			<!-- #endif -->
 			<view class="uni-navbar__placeholder-view"></view>
 		</view>
 	</view>
