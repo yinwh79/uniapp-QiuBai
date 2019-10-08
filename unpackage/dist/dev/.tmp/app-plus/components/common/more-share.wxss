@@ -242,7 +242,7 @@
 
 
 /* 分享 */
-.more-share-model.data-v-52623268{
+.more-share-model.data-v-f5aa8b7e{
 	background:rgba(51, 51, 51, 0.49);
 	position: fixed;
 	top: 0;
@@ -251,7 +251,7 @@
 	bottom: 0;
 	z-index: 100;
 }
-.more-share.data-v-52623268{
+.more-share.data-v-f5aa8b7e{
 	position: fixed;
 	z-index: 110;
 	bottom: 0;
@@ -259,11 +259,11 @@
 	right: 0;
 	background: #FFFFFF;
 }
-.more-share-title.data-v-52623268,.more-share-bottom.data-v-52623268{
+.more-share-title.data-v-f5aa8b7e,.more-share-bottom.data-v-f5aa8b7e{
 	font-size: 32rpx;
 	padding: 25rpx;
 }
-.more-share-body.data-v-52623268{
+.more-share-body.data-v-f5aa8b7e{
 	white-space: nowrap;
 	width: 100%;
 	height: 200rpx;
@@ -274,7 +274,7 @@
 	display: flex!important;
 	line-height: 200rpx!important;
 }
-.more-share-item.data-v-52623268{
+.more-share-item.data-v-f5aa8b7e{
 	width: 25%;
 	display: -webkit-inline-box;
 	display: -webkit-inline-flex;
@@ -295,29 +295,29 @@
 	        flex-direction: column;
 	height: 100%;
 }
-.more-share-item>view.data-v-52623268:first-child{
+.more-share-item>view.data-v-f5aa8b7e:first-child{
 	width: 100rpx;
 	height: 100rpx;
 	border-radius: 100%;
 	font-size: 55rpx;
 	color: #FFFFFF;
 }
-.more-share-item>view.data-v-52623268:last-child{
+.more-share-item>view.data-v-f5aa8b7e:last-child{
 	color: #7A7A7A;
 }
-.more-share-hover.data-v-52623268{
+.more-share-hover.data-v-f5aa8b7e{
 	background: #EEEEEE;
 }
-.more-share-wx.data-v-52623268{
+.more-share-wx.data-v-f5aa8b7e{
 	background: #2AD19B;
 }
-.more-share-pyq.data-v-52623268{
+.more-share-pyq.data-v-f5aa8b7e{
 	background: #514D4C;
 }
-.more-share-wb.data-v-52623268{
+.more-share-wb.data-v-f5aa8b7e{
 	background: #EE5E5E;
 }
-.more-share-qq.data-v-52623268{
+.more-share-qq.data-v-f5aa8b7e{
 	background: #4A73BA;
 }
 

@@ -2,8 +2,7 @@
 	<view class="index-list animated fadeIn fast">
 		<view class="index-list1 u-f-ac u-f-jsb">
 			<view class="u-f-ac">
-				<image @tap.stop="openSpace" :src="item.userpic" 
-				mode="widthFix" 
+				<image @tap.stop="openSpace" :src="item.userpic" 				
 				lazy-load></image>
 				{{item.username}}
 			</view>
@@ -144,6 +143,7 @@
 .index-list1>view:first-child image{
 	width: 85upx;
 	height: 85upx;
+  border: 1upx solid;
 	border-radius: 100%;
 	margin-right: 10upx;
 }

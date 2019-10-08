@@ -60,11 +60,13 @@ export default{
 	},
 	// 错误处理
 	errorCheck(err,res,errfun = false,resfun = false){
+    // 接口存在错误
 		if (err) {
 			typeof errfun === 'function' && errfun();
 			uni.showToast({ title: '加载失败',icon:"none" });
 			return false;
 		}
+    // 接口走通但状态码不是200
 		if (res.data.errorCode) {
 			typeof errfun === 'function' && resfun();
 			uni.showToast({ title: res.data.msg,icon:"none" });
