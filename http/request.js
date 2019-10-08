@@ -1,24 +1,3 @@
-## 开发模块
-
-`信息模块`
-
-`话题模块`
-
-`搜索模块`
-
-`会员模块`
-
-`在线聊天`
-
-`广告位`
-
-`其他模块`
-
-## 请求封装
-
-基础版本封装
-
-```js
 export default {
 	// 全局配置
 	config:{
@@ -83,5 +62,3 @@ export default {
 		return this.request(options)
 	}
 }
-```
-

@@ -60,7 +60,7 @@ export default{
 	},
 	// 错误处理
 	errorCheck(err,res,errfun = false,resfun = false){
-    // 接口存在错误
+    // 请求失败
 		if (err) {
 			typeof errfun === 'function' && errfun();
 			uni.showToast({ title: '加载失败',icon:"none" });
